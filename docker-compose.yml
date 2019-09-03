@@ -1,0 +1,26 @@
+version: "3"
+services:
+  leicester:
+    image: elixir
+    working_dir: /usr/src/leicester
+    environment:
+      DB_HOST: postgres
+      DB_USERNAME: postgres
+      DB_PASSWORD: developmentonly
+    ports:
+      - "80:4000"
+    volumes:
+      - .:/usr/src/leicester
+    command: ./start.sh
+  db:
+    image: postgres:11.5
+    container_name: postgres
+    environment:
+      POSTGRES_PASSWORD: developmentonly
+    volumes:
+      - leicester-dbvolume:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  ? leicester-dbvolume
