@@ -65,6 +65,7 @@
         class={segment === 'blog' ? 'selected' : ''}
         href="blog">
         blog
+        {r}
       </a>
     </li>
   </ul>
